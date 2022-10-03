@@ -2,7 +2,6 @@
 
 namespace Galee\Casts;
 
-use Galee\Casts\Commands\CastCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
