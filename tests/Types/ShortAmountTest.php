@@ -2,7 +2,6 @@
 
 use Galee\Casts\Exceptions\MissingValueException;
 use Galee\Casts\Types\ShortAmount;
-
 use function PHPUnit\Framework\assertEquals;
 use function PHPUnit\Framework\assertInstanceOf;
 use function PHPUnit\Framework\assertIsString;

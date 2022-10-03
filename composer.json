@@ -50,7 +50,12 @@
         "analyse": "vendor/bin/phpstan analyse",
         "test": "vendor/bin/pest",
         "test-coverage": "XDEBUG_MODE=coverage vendor/bin/pest --coverage",
-        "format": "vendor/bin/pint"
+        "format": "vendor/bin/pint",
+        "precommit": [
+            "composer format",
+            "composer analyse",
+            "composer test-coverage"
+        ]
     },
     "config": {
         "sort-packages": true,

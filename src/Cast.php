@@ -2,8 +2,9 @@
 
 namespace Galee\Casts;
 
-use Illuminate\Support\Str;
 use Galee\Casts\Exceptions\MissingValueException;
+use Illuminate\Support\Str;
+use NumberFormatter as NativeNumberFormatter;
 
 abstract class Cast
 {
@@ -34,6 +35,13 @@ abstract class Cast
         }
 
         return floatval($value);
+    }
+
+    protected function floatToInt($value): int
+    {
+        $numberFormatter = new NativeNumberFormatter('en_EN', NativeNumberFormatter::DECIMAL, '# ##0,###');
+
+        return intval($numberFormatter->parse($value));
     }
 
     protected function floatDecimalEqualsZero(float $value): bool

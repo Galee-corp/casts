@@ -4,7 +4,6 @@ namespace Galee\Casts\Types;
 
 use Galee\Casts\Cast;
 use Galee\Casts\Contracts\Castable;
-use NumberFormatter as NativeNumberFormatter;
 
 class ShortAmount extends Cast implements Castable
 {
@@ -14,28 +13,20 @@ class ShortAmount extends Cast implements Castable
             $this->value = $this->stringToFloat($this->value);
         }
 
-        $this->value = $this->abbr($this->value);
+        $this->value = $this->abbr(
+            $this->floatToInt($this->value)
+        );
     }
 
-    private function abbr(): string
+    private function abbr(int $value): string
     {
-        $num = $this->toInt($this->value);
-
         [$format, $suffix] = match (true) {
-            ($num < 0) => $this->abbrNegative($num),
-            default => $this->abbrPositive($num),
+            ($value < 0) => $this->abbrNegative($value),
+            default => $this->abbrPositive($value),
         };
 
-        return !empty($format . $suffix) ? trim($format . ' ' . $suffix) : 0;
+        return ! empty($format.$suffix) ? trim($format.' '.$suffix) : 0;
     }
-
-    private function toInt(): int
-    {
-        $numberFormatter = new NativeNumberFormatter('en_EN', NativeNumberFormatter::DECIMAL, '# ##0,###');
-
-        return intval($numberFormatter->parse($this->value));
-    }
-
 
     private function abbrPositive(int $num): array
     {
@@ -44,7 +35,8 @@ class ShortAmount extends Cast implements Castable
             ($num >= 1000 && $num < 1000000) => [round($num / 1000, 1), 'K'],
             ($num >= 1000000 && $num < 1000000000) => [round($num / 1000000, 1), 'M'],
             ($num >= 1000000000 && $num < 1000000000000) => [round($num / 1000000000, 1), 'B'],
-            ($num >= 1000000000000) => [round($num / 1000000000000, 1), 'T']
+            ($num >= 1000000000000) => [round($num / 1000000000000, 1), 'T'],
+            default => [$num, ' ']
         };
     }
 
@@ -55,7 +47,8 @@ class ShortAmount extends Cast implements Castable
             ($num <= -1000 && $num > -1000000) => [round($num / 1000, 1), 'K'],
             ($num <= -1000000 && $num > -1000000000) => [round($num / 1000000, 1), 'M'],
             ($num <= -1000000000 && $num > -1000000000000) => [round($num / 1000000000, 1), 'B'],
-            ($num <= -1000000000000) => [round($num / 1000000000000, 1), 'T']
+            ($num <= -1000000000000) => [round($num / 1000000000000, 1), 'T'],
+            default => [$num, ' ']
         };
     }
 }
