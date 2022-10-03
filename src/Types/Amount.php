@@ -16,7 +16,7 @@ class Amount extends Cast implements Castable
         $this->value = round($this->value, 2);
 
         if (is_float($this->value) && $this->floatDecimalEqualsZero($this->value)) {
-            $this->value = intval($this->value);
+            $this->value = $this->floatToInt($this->value);
         }
     }
 }
