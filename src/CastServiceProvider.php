@@ -2,9 +2,9 @@
 
 namespace Galee\Casts;
 
+use Galee\Casts\Commands\CastCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use Galee\Casts\Commands\CastCommand;
 
 class CastServiceProvider extends PackageServiceProvider
 {
@@ -21,6 +21,6 @@ class CastServiceProvider extends PackageServiceProvider
             // ->hasViews()
             // ->hasMigration('create_casts_table')
             // ->hasCommand(CastCommand::class)
-            ;
+;
     }
 }

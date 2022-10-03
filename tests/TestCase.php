@@ -2,9 +2,9 @@
 
 namespace Galee\Casts\Tests;
 
+use Galee\Casts\CastServiceProvider;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Orchestra\Testbench\TestCase as Orchestra;
-use Galee\Casts\CastServiceProvider;
 
 class TestCase extends Orchestra
 {
