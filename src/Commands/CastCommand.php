@@ -1,12 +1,12 @@
 <?php
 
-namespace VendorName\Skeleton\Commands;
+namespace Galee\Casts\Commands;
 
 use Illuminate\Console\Command;
 
-class SkeletonCommand extends Command
+class CastCommand extends Command
 {
-    public $signature = 'skeleton';
+    public $signature = 'casts';
 
     public $description = 'My command';
 

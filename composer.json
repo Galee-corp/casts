@@ -1,24 +1,24 @@
 {
-    "name": ":vendor_slug/:package_slug",
-    "description": ":package_description",
+    "name": "galee-corp/casts",
+    "description": "value casting classes",
     "keywords": [
-        ":vendor_name",
+        "galee",
         "laravel",
-        ":package_slug"
+        "casting"
     ],
-    "homepage": "https://github.com/:vendor_slug/:package_slug",
+    "homepage": "https://github.com/galee-corp/casts",
     "license": "MIT",
     "authors": [
         {
-            "name": ":author_name",
-            "email": "author@domain.com",
+            "name": "Philippe Khill",
+            "email": "khill@galee.io",
             "role": "Developer"
         }
     ],
     "require": {
         "php": "^8.1",
-        "spatie/laravel-package-tools": "^1.13.0",
-        "illuminate/contracts": "^9.0"
+        "illuminate/contracts": "^9.0",
+        "spatie/laravel-package-tools": "^1.13.0"
     },
     "require-dev": {
         "laravel/pint": "^1.0",
@@ -26,40 +26,44 @@
         "nunomaduro/larastan": "^2.0.1",
         "orchestra/testbench": "^7.0",
         "pestphp/pest": "^1.21",
+        "pestphp/pest-plugin-faker": "^1.0",
         "pestphp/pest-plugin-laravel": "^1.1",
         "phpstan/extension-installer": "^1.1",
         "phpstan/phpstan-deprecation-rules": "^1.0",
         "phpstan/phpstan-phpunit": "^1.0",
-        "phpunit/phpunit": "^9.5",
-        "spatie/laravel-ray": "^1.26"
+        "phpunit/phpunit": "^9.5"
     },
     "autoload": {
         "psr-4": {
-            "VendorName\\Skeleton\\": "src",
-            "VendorName\\Skeleton\\Database\\Factories\\": "database/factories"
+            "Galee\\Casts\\": "src",
+            "Galee\\Casts\\Database\\Factories\\": "database/factories"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "VendorName\\Skeleton\\Tests\\": "tests"
+            "Galee\\Casts\\Tests\\": "tests"
         }
     },
     "scripts": {
         "analyse": "vendor/bin/phpstan analyse",
         "test": "vendor/bin/pest",
-        "test-coverage": "vendor/bin/pest --coverage",
+        "test-coverage": "XDEBUG_MODE=coverage vendor/bin/pest --coverage",
         "format": "vendor/bin/pint"
     },
     "config": {
-        "sort-packages": true
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true,
+            "phpstan/extension-installer": true
+        }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "VendorName\\Skeleton\\SkeletonServiceProvider"
+                "Galee\\Casts\\CastServiceProvider"
             ],
             "aliases": {
-                "Skeleton": "VendorName\\Skeleton\\Facades\\Skeleton"
+                "Analysis": "Galee\\Casts\\Facades\\Cast"
             }
         }
     },
