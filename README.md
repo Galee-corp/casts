@@ -60,8 +60,8 @@ echo amount('fdsf-1234.56.12fsdfs');
 ### Galee\Casts\Types\Percentage
 
 ```php
-$amount = new Galee\Casts\Types\Percentage('12.34');
-echo $amount->get();
+$percentage = new Galee\Casts\Types\Percentage('12.34');
+echo $percentage->get();
 // (string) 12.34 %
 ```
 
@@ -87,8 +87,8 @@ echo percentage('fdsf-12.56.12fsdfs');
 ### Galee\Casts\Types\Ratio
 
 ```php
-$amount = new Galee\Casts\Types\Ratio('1.42');
-echo $amount->get();
+$ratio = new Galee\Casts\Types\Ratio('1.42');
+echo $ratio->get();
 // (string) 1.42 %
 ```
 
@@ -111,8 +111,8 @@ echo ratio('fdsf-1.56.12fsdfs');
 ### Galee\Casts\Types\ShortAmount
 
 ```php
-$amount = new Galee\Casts\Types\ShortAmount('1234');
-echo $amount->get();
+$shortAmount = new Galee\Casts\Types\ShortAmount('1234');
+echo $shortAmount->get();
 // (string) 1.2 K
 ```
 
