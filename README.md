@@ -5,15 +5,7 @@
 [![GitHub Code Style Action Status](https://img.shields.io/github/workflow/status/galee-corp/casts/Fix%20PHP%20code%20style%20issues?label=code%20style)](https://github.com/galee-corp/casts/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
 [![Total Downloads](https://img.shields.io/packagist/dt/galee-corp/casts.svg?style=flat-square)](https://packagist.org/packages/galee-corp/casts)
 
-⚠️ ⚠️ ⚠️ DO NOT USE - WORK IN PROGRESS !!! ⚠️ ⚠️ ⚠️
-
-## Support us
-
-[<img src="https://github-ads.s3.eu-central-1.amazonaws.com/casts.jpg?t=1" width="419px" />](https://spatie.be/github-ad-click/casts)
-
-We invest a lot of resources into creating [best in class open source packages](https://spatie.be/open-source). You can support us by [buying one of our paid products](https://spatie.be/open-source/support-us).
-
-We highly appreciate you sending us a postcard from your hometown, mentioning which of our package(s) you are using. You'll find our address on [our contact page](https://spatie.be/about-us). We publish all received postcards on [our virtual postcard wall](https://spatie.be/open-source/postcards).
+⚠️ ⚠️ ⚠️ DO NOT USE NOW - WORK IN PROGRESS !!! ⚠️ ⚠️ ⚠️
 
 ## Installation
 
@@ -21,13 +13,6 @@ You can install the package via composer:
 
 ```bash
 composer require galee-corp/casts
-```
-
-You can publish and run the migrations with:
-
-```bash
-php artisan vendor:publish --tag="casts-migrations"
-php artisan migrate
 ```
 
 You can publish the config file with:
@@ -43,17 +28,111 @@ return [
 ];
 ```
 
-Optionally, you can publish the views using
-
-```bash
-php artisan vendor:publish --tag="casts-views"
-```
-
 ## Usage
 
+
+### Galee\Casts\Types\Amount
+
 ```php
-$cast = new Galee\Casts\Cast();
-echo $cast->echoPhrase('Hello, Galee\Casts!');
+$amount = new Galee\Casts\Types\Amount('1234.56');
+echo $amount->get();
+```
+
+or use the helper
+
+```php
+echo amount('1234.56');
+// (float) 1234.56
+
+echo amount(1234.56);
+// (float) 1234.56
+
+echo amount(1234);
+// (int) 1234
+
+echo amount(1234.0);
+// (int) 1234
+
+echo amount('fdsf-1234.56.12fsdfs');
+// (float) -1234.56
+```
+
+### Galee\Casts\Types\Percentage
+
+```php
+$amount = new Galee\Casts\Types\Percentage('12.34');
+echo $amount->get();
+// (string) 12.34 %
+```
+
+or use the helper
+
+```php
+echo percentage('12.34');
+// (string) 12.34 %
+
+echo percentage(12.34);
+// (string) 12.34 %
+
+echo percentage(12);
+// (string) 12 %
+
+echo percentage(12.0);
+// (string) 12 %
+
+echo percentage('fdsf-12.56.12fsdfs');
+// (string) -12.56 %
+```
+
+### Galee\Casts\Types\Ratio
+
+```php
+$amount = new Galee\Casts\Types\Ratio('1.42');
+echo $amount->get();
+// (string) 1.42 %
+```
+
+or use the helper
+
+```php
+echo ratio('1.34');
+// (float) 1.34
+
+echo ratio(1.34);
+// (float) 1.34
+
+echo ratio(1);
+// (float) 1.0
+
+echo ratio('fdsf-1.56.12fsdfs');
+// (float) -1.56
+```
+
+### Galee\Casts\Types\ShortAmount
+
+```php
+$amount = new Galee\Casts\Types\ShortAmount('1234');
+echo $amount->get();
+// (string) 1.2 K
+```
+
+or use the helper
+
+```php
+echo shortAmount('1234.34');
+// (string) 1.2 K
+
+echo shortAmount(1234567);
+// (string) 1.2 M
+
+echo shortAmount(1234567890);
+// (string) 1.2 B
+
+echo shortAmount(1234567890000);
+// (string) 1.2 T
+
+echo shortAmount('fdsf-1234.56.12fsdfs');
+// (string) -1.2 K
 ```
 
 ## Testing
