@@ -2,6 +2,7 @@
 
 namespace Galee\Casts;
 
+use Illuminate\Support\Str;
 use Galee\Casts\Exceptions\MissingValueException;
 
 abstract class Cast
@@ -24,7 +25,15 @@ abstract class Cast
 
     protected function stringToFloat(string $value): float
     {
-        return floatval(preg_replace('/[^0-9\.]/', '', $value));
+        $value = preg_replace('/[^0-9\.\-]/', '', $value);
+
+        if (Str::of($value)->startsWith('-')) {
+            $value = Str::of($value)
+                ->after('-')->remove('-')->prepend('-')
+                ->toString();
+        }
+
+        return floatval($value);
     }
 
     protected function floatDecimalEqualsZero(float $value): bool
