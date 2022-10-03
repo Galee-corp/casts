@@ -36,7 +36,10 @@
     "autoload": {
         "psr-4": {
             "Galee\\Casts\\": "src"
-        }
+        },
+        "files": [
+            "./helpers.php"
+        ]
     },
     "autoload-dev": {
         "psr-4": {
