@@ -24,6 +24,9 @@ it('returns a float ratio', function () {
 
     assertIsFloat($value = ratio(1234.0001));
     assertEquals($value, 1234.0);
+
+    assertIsFloat($value = ratio(1234));
+    assertEquals($value, 1234.0);
 });
 
 it('converts various string formats to correct ratio', function () {

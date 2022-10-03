@@ -3,6 +3,8 @@
 namespace Galee\Casts;
 
 use Galee\Casts\Exceptions\MissingValueException;
+use Illuminate\Support\Str;
+use NumberFormatter as NativeNumberFormatter;
 
 abstract class Cast
 {
@@ -24,7 +26,22 @@ abstract class Cast
 
     protected function stringToFloat(string $value): float
     {
-        return floatval(preg_replace('/[^0-9\.]/', '', $value));
+        $value = preg_replace('/[^0-9\.\-]/', '', $value);
+
+        if (Str::of($value)->startsWith('-')) {
+            $value = Str::of($value)
+                ->after('-')->remove('-')->prepend('-')
+                ->toString();
+        }
+
+        return floatval($value);
+    }
+
+    protected function floatToInt($value): int
+    {
+        $numberFormatter = new NativeNumberFormatter('en_EN', NativeNumberFormatter::DECIMAL, '# ##0,###');
+
+        return intval($numberFormatter->parse($value));
     }
 
     protected function floatDecimalEqualsZero(float $value): bool
