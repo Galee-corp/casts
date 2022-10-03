@@ -35,8 +35,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Galee\\Casts\\": "src",
-            "Galee\\Casts\\Database\\Factories\\": "database/factories"
+            "Galee\\Casts\\": "src"
         }
     },
     "autoload-dev": {
@@ -63,7 +62,7 @@
                 "Galee\\Casts\\CastServiceProvider"
             ],
             "aliases": {
-                "Analysis": "Galee\\Casts\\Facades\\Cast"
+                "Cast": "Galee\\Casts\\Facades\\Cast"
             }
         }
     },
