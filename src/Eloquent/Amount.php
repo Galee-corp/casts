@@ -18,7 +18,7 @@ class Amount implements CastsAttributes
      */
     public function get($model, $key, $value, $attributes)
     {
-        return (new TypesAmount($value));
+        return new TypesAmount($value);
     }
 
     /**
@@ -26,7 +26,7 @@ class Amount implements CastsAttributes
      *
      * @param  \Illuminate\Database\Eloquent\Model  $model
      * @param  string  $key
-     * @param  mixed   $value
+     * @param  mixed  $value
      * @param  array  $attributes
      * @return mixed
      */

@@ -3,9 +3,8 @@
 use Galee\Casts\Eloquent\Amount;
 use Galee\Casts\Types\Amount as TypesAmount;
 use Illuminate\Database\Eloquent\Model;
-
-use function PHPUnit\Framework\assertInstanceOf;
 use function PHPUnit\Framework\assertEquals;
+use function PHPUnit\Framework\assertInstanceOf;
 
 it('casts a model attribute to an amount type class', function () {
     class DummyAmount extends Model
@@ -20,7 +19,7 @@ it('casts a model attribute to an amount type class', function () {
     }
 
     $modelAmount = DummyAmount::make([
-        'amount' => '1234.00'
+        'amount' => '1234.00',
     ])->amount;
 
     assertInstanceOf(TypesAmount::class, $modelAmount);

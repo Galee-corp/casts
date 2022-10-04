@@ -3,9 +3,8 @@
 use Galee\Casts\Eloquent\ShortAmount;
 use Galee\Casts\Types\ShortAmount as TypesShortAmount;
 use Illuminate\Database\Eloquent\Model;
-
-use function PHPUnit\Framework\assertInstanceOf;
 use function PHPUnit\Framework\assertEquals;
+use function PHPUnit\Framework\assertInstanceOf;
 
 it('casts a model attribute to a short-amount type class', function () {
     class DummyShortAmount extends Model
@@ -20,7 +19,7 @@ it('casts a model attribute to a short-amount type class', function () {
     }
 
     $modelShortAmount = DummyShortAmount::make([
-        'short_amount' => '1234.00'
+        'short_amount' => '1234.00',
     ])->short_amount;
 
     assertInstanceOf(TypesShortAmount::class, $modelShortAmount);

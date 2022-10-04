@@ -3,9 +3,8 @@
 use Galee\Casts\Eloquent\Ratio;
 use Galee\Casts\Types\Ratio as TypesRatio;
 use Illuminate\Database\Eloquent\Model;
-
-use function PHPUnit\Framework\assertInstanceOf;
 use function PHPUnit\Framework\assertEquals;
+use function PHPUnit\Framework\assertInstanceOf;
 
 it('casts a model attribute to a ratio type class', function () {
     class DummyRatio extends Model
@@ -20,7 +19,7 @@ it('casts a model attribute to a ratio type class', function () {
     }
 
     $modelRatio = DummyRatio::make([
-        'ratio' => '1.10'
+        'ratio' => '1.10',
     ])->ratio;
 
     assertInstanceOf(TypesRatio::class, $modelRatio);
