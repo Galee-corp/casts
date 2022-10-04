@@ -26,7 +26,7 @@ class ShortAmount implements CastsAttributes
      *
      * @param  \Illuminate\Database\Eloquent\Model  $model
      * @param  string  $key
-     * @param  array  $value
+     * @param  string  $value
      * @param  array  $attributes
      * @return string
      */
